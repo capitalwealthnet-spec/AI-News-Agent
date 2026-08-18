@@ -87,6 +87,9 @@ status.innerText =
 }
 
 
+
+
+
 const speakBtn = document.getElementById("speakBtn");
 
 speakBtn.addEventListener("click", () => {
@@ -111,4 +114,7 @@ speakBtn.addEventListener("click", () => {
     speechSynthesis.speak(speech);
 
 });
+
+
+
 
