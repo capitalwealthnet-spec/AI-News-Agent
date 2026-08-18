@@ -34,9 +34,7 @@ const stories = [
 function generateBriefing() {
 
     const topic = document.getElementById("topic").value;
-
     const newsContainer = document.getElementById("news");
-
     const status = document.getElementById("status");
 
     status.innerText =
@@ -44,7 +42,6 @@ function generateBriefing() {
 
     newsContainer.innerHTML = "";
 
-    // Filter stories according to the selected topic
     const filteredStories = stories.filter(story => {
 
         if (topic === "global") {
@@ -55,7 +52,6 @@ function generateBriefing() {
     });
 
 
-    // Display only matching stories
     filteredStories.forEach((story, index) => {
 
         const card = document.createElement("article");
@@ -81,62 +77,72 @@ function generateBriefing() {
     });
 
 
-status.innerText =
-    topic.toUpperCase() + " BRIEFING READY";
-    
+    status.innerText =
+        topic.toUpperCase() + " BRIEFING READY";
 }
 
 
 
-
+// ==============================
+// VOICE CONTROLS
+// ==============================
 
 const speakBtn = document.getElementById("speakBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const stopBtn = document.getElementById("stopBtn");
 
-speakBtn.addEventListener("click", () => {
+
+// PLAY / LISTEN
+
+speakBtn.onclick = function () {
 
     const newsContainer = document.getElementById("news");
 
-    const briefingText = newsContainer.innerText;
+    const briefingText = newsContainer.innerText.trim();
 
-    if (!briefingText) {
+    if (briefingText === "") {
         alert("Generate a briefing first.");
         return;
     }
 
-    speechSynthesis.cancel();
+    window.speechSynthesis.cancel();
 
     const speech = new SpeechSynthesisUtterance(briefingText);
 
-    speech.rate = 0.95;
+    speech.rate = 0.9;
     speech.pitch = 1;
     speech.volume = 1;
 
-    speechSynthesis.speak(speech);
+    window.speechSynthesis.speak(speech);
+};
 
 
-
-const pauseBtn = document.getElementById("pauseBtn");
-const stopBtn = document.getElementById("stopBtn");
+// PAUSE / RESUME
 
 pauseBtn.onclick = function () {
 
-    if (window.speechSynthesis.speaking) {
+    if (window.speechSynthesis.paused) {
+
+        window.speechSynthesis.resume();
+
+        pauseBtn.innerText = "⏸ Pause";
+
+    } else if (window.speechSynthesis.speaking) {
+
         window.speechSynthesis.pause();
+
+        pauseBtn.innerText = "▶️ Resume";
     }
 
 };
+
+
+// STOP
 
 stopBtn.onclick = function () {
 
     window.speechSynthesis.cancel();
 
+    pauseBtn.innerText = "⏸ Pause";
+
 };
-
-
-    
-
-});
-
-
-
-
