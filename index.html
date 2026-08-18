@@ -19,27 +19,33 @@
 
         <section class="controls">
 
-    <select id="topic">
-        <option value="global">Global News</option>
-        <option value="business">Business</option>
-        <option value="technology">Technology</option>
-        <option value="sports">Sports</option>
-        <option value="science">Science</option>
-    </select>
+            <select id="topic">
+                <option value="global">Global News</option>
+                <option value="business">Business</option>
+                <option value="technology">Technology</option>
+                <option value="sports">Sports</option>
+                <option value="science">Science</option>
+            </select>
 
-    <button onclick="generateBriefing()">
-        Generate Briefing
-    </button>
+            <button onclick="generateBriefing()">
+                Generate Briefing
+            </button>
 
-</section>
+        </section>
 
-<button id="speakBtn">
-    🔊 Listen to Briefing
-</button>
+        <button id="speakBtn">
+            🔊 Listen to Briefing
+        </button>
 
-<div id="status">
-    Ready.
-</div>
+        <div id="status">
+            Ready.
+        </div>
+
+        <section id="news"></section>
+
+    </div>
+
+    <script src="app.js?v=2"></script>
 
 </body>
 </html>
