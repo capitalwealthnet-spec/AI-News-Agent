@@ -81,6 +81,34 @@ function generateBriefing() {
     });
 
 
-    status.innerText =
-        topic.toUpperCase() + " BRIEFING READY";
+status.innerText =
+    topic.toUpperCase() + " BRIEFING READY";
+    
 }
+
+
+const speakBtn = document.getElementById("speakBtn");
+
+speakBtn.addEventListener("click", () => {
+
+    const newsContainer = document.getElementById("news");
+
+    const briefingText = newsContainer.innerText;
+
+    if (!briefingText) {
+        alert("Generate a briefing first.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(briefingText);
+
+    speech.rate = 0.95;
+    speech.pitch = 1;
+    speech.volume = 1;
+
+    speechSynthesis.speak(speech);
+
+});
+
