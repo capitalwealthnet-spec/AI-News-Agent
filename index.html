@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <div class="label">AI MORNING BRIEFING</div>
+            <h1>Global News Agent</h1>
+            <p>Your personal daily global news briefing.</p>
+        </header>
+
+        <section class="controls">
+
+            <select id="topic">
+                <option value="global">Global News</option>
+                <option value="business">Business</option>
+                <option value="technology">Technology</option>
+                <option value="sports">Sports</option>
+                <option value="science">Science</option>
+            </select>
+
+            <button onclick="generateBriefing()">
+                Generate Briefing
+            </button>
+
+        </section>
+
+        <div id="status">
+            Ready.
+        </div>
+
+        <section id="news"></section>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
