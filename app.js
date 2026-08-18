@@ -113,6 +113,28 @@ speakBtn.addEventListener("click", () => {
 
     speechSynthesis.speak(speech);
 
+
+
+const pauseBtn = document.getElementById("pauseBtn");
+const stopBtn = document.getElementById("stopBtn");
+
+pauseBtn.onclick = function () {
+
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+    }
+
+};
+
+stopBtn.onclick = function () {
+
+    window.speechSynthesis.cancel();
+
+};
+
+
+    
+
 });
 
 
